@@ -1,0 +1,7 @@
+.c-filter {
+  text-align: center;
+}
+
+.c-filter__list > li:not(:first-child) {
+	margin-left: 15px;
+}

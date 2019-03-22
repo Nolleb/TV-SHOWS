@@ -1,0 +1,49 @@
+.c-score {
+  display: inline-block;
+
+  // Pick colors for our Poor, Average, and Good ratings...
+  $color-poor:    red;
+  $color-average: orange;
+  $color-good:    #5af75a;
+
+  // ...and populate the list of scores (e.g. 7.2) with their associated
+  // color by mixing between them.
+  $scores: (
+    0:  $color-poor,
+    1:  mix($color-poor, $color-average, 80%),
+    2:  mix($color-poor, $color-average, 60%),
+    3:  mix($color-poor, $color-average, 40%),
+    4:  mix($color-poor, $color-average, 20%),
+    5:  $color-average,
+    6:  mix($color-average, $color-good, 80%),
+    7:  mix($color-average, $color-good, 60%),
+    8:  mix($color-average, $color-good, 40%),
+    9:  mix($color-average, $color-good, 20%),
+    10: $color-good,
+  );
+
+  @each $score, $color in $scores {
+
+    &[data-score^="#{$score}"] {
+        color: $color;
+    }
+     &[data-score^="#{$score}"] + span{
+        color: $color;
+    }
+  }
+  
+  &--inverse {
+    vertical-align: middle;
+    padding-right: 0.28em; /* [1] */
+    padding-left:  0.28em; /* [1] */
+    
+    @each $score, $color in $scores {
+
+      &[data-score^="#{$score}"] {
+        color: $color;
+      }
+
+    }
+
+  }
+}
