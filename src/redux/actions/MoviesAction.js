@@ -24,3 +24,10 @@ export function loadMovies() {
       });
   };
 }
+
+export function updateSearchQuery(query){
+  return {
+    type: types.LOAD_MOVIES_SUCCESS,
+    query
+  };
+}

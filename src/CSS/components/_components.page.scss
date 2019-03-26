@@ -1,7 +1,16 @@
 .c-page {
   background: $color-grey-2;
-  padding: $global-spacing-unit;
+  margin: 0 auto;
+  max-width: 1068px;
   position: relative;
-  padding-top: 120px;
+  
   min-height: 100vh;
+  text-align: center;
+  padding: $global-spacing-unit;
+  padding-top: 120px;
+  @include mq($from: medium) {
+    padding: 0;
+    padding-top: 120px;
+  }
+
 }

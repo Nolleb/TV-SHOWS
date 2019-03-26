@@ -22,10 +22,11 @@ class MoviesPage extends React.Component {
   render() {
     return (
       <Fragment>
-        <h2>Movies</h2>
+      <ul className="o-layout">
         {this.props.movies.map(movie => {
           return <Movie key={movie.id} {...movie}/>;
         })}
+      </ul>
       </Fragment>
     );
   }

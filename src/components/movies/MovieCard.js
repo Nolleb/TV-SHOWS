@@ -1,7 +1,7 @@
 import React from "react";
 const url='https://image.tmdb.org/t/p/w500';
 const MovieCard = (props) => (
-  <li className="o-layout__item">
+  <li className="o-layout__item u-1/2@sm u-1/3@md">
     <div className="c-panel shadow">
       <div className="c-panel__favorite">
         <span>&#10084;</span>
@@ -14,11 +14,8 @@ const MovieCard = (props) => (
             </div>
           </div>
         </a>
-
-        <div className="o-media">
-          <div className="o-media__img">
-            <img src={url+props.poster_path} alt="title" width="310" />
-          </div>
+        <div className="c-panel__media">
+            <img className='c-panel__img' src={url+props.poster_path} alt="title" width="310" />
         </div>
       </div>
       <div className="c-panel__bottom">
