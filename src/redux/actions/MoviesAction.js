@@ -2,32 +2,22 @@ import * as types from "./ActionTypes";
 import * as moviesApi from "../../api/MoviesApi";
 
 export function loadMoviesSuccess(movies) {
-  console.log("movies actions dispatch");
-  console.log(movies);
   return {
     type: types.LOAD_MOVIES_SUCCESS,
     movies
   };
 }
 
-export function loadMovies() {
+export function loadMovies(query) {
   return function(dispatch) {
     return moviesApi
-      .getMovies()
+      .getMovies(query)
       .then(movies => {
-        console.log("dispatch action from loadMovies");
-        console.log(movies);
+        console.log("dispatch action");
         dispatch(loadMoviesSuccess(movies));
       })
       .catch(error => {
         throw error;
       });
-  };
-}
-
-export function updateSearchQuery(query){
-  return {
-    type: types.LOAD_MOVIES_SUCCESS,
-    query
   };
 }

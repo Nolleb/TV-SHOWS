@@ -1,18 +1,19 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import * as moviesActions from "../../redux/actions/MoviesAction";
+import * as queryAction from "../../redux/actions/QueryAction";
 import { bindActionCreators } from "redux";
 import Movie from "./MovieCard";
 
 class MoviesPage extends React.Component {
   componentDidMount() {
-    const { movies, actions } = this.props;
-    console.log("actions in componentDiDMount");
-    
-   actions.loadMovies();
-   console.log(movies);
+    const { movies, actions, query } = this.props;
+
+    //actions.loadMovies(query);
+    actions.updateSearchQuery(query);
+
     if (movies.length === 0) {
-      actions.loadMovies().catch(error => {
+      actions.loadMovies(query).catch(error => {
         alert("loading movies failed" + error);
         console.log(movies);
       });
@@ -22,11 +23,12 @@ class MoviesPage extends React.Component {
   render() {
     return (
       <Fragment>
-      <ul className="o-layout">
-        {this.props.movies.map(movie => {
-          return <Movie key={movie.id} {...movie}/>;
-        })}
-      </ul>
+        <h2>Movies</h2>
+        <ul className="o-layout">
+            {this.props.movies.map(movie => {
+              return <Movie key={movie.id} {...movie} />;
+            })}
+        </ul>
       </Fragment>
     );
   }
@@ -34,14 +36,19 @@ class MoviesPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    query: state.query
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      loadMovies: bindActionCreators(moviesActions.loadMovies, dispatch)
+      loadMovies: bindActionCreators(moviesActions.loadMovies, dispatch),
+      updateSearchQuery: bindActionCreators(
+        queryAction.updateSearchQuery,
+        dispatch
+      )
     }
   };
 }
