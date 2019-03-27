@@ -19,7 +19,7 @@ const MovieCard = (props) => (
         </div>
       </div>
       <div className="c-panel__bottom">
-        <h2 className="heading-primary">{props.title}</h2>
+        <h2 className="heading-primary">{props.isSelected?props.title:props.name}</h2>
         <div className="c-panel__headings">
           <div className="c-panel__note ">
             <span className="c-star">&#9733;</span>
@@ -28,7 +28,7 @@ const MovieCard = (props) => (
             </span>{" "}
             <span>{`/10`}</span>
           </div>
-          <h4 className="heading-primary">{props.release_date}</h4>
+          <h4 className="heading-primary">{props.isSelected?props.release_date:props.first_air_date}</h4>
           <span>{props.genre_ids[0]}</span>
         </div>
       </div>

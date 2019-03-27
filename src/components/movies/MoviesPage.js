@@ -30,7 +30,7 @@ class MoviesPage extends React.Component {
         <h2>{isSelected?"Movies":"Tv shows"}</h2>
         <ul className="o-layout">
             {category.map(movie => {
-              return <Movie key={movie.id} {...movie} />;
+              return <Movie key={movie.id} {...movie} isSelected={this.props.isSelected}/>;
             })}
         </ul>
       </Fragment>
