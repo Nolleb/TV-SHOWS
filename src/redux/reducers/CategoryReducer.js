@@ -7,7 +7,7 @@ export default function categoryReducer(
 ) {
   switch (action.type) {
     case types.CHOOSE_CATEGORY:
-      return action.isSelected;
+      return action.bool;
     default:
       return state;
   }

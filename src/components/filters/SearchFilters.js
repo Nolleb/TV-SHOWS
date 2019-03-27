@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as categoryAction from "../../redux/actions/CategoryAction";
 
-const SearchFilters = (props) => {
+const SearchFilters = props => {
+  const [isSelect, setSelect] = useState(false);
+  const { chooseCategory } = props;
 
-  const { isSelected } = props;
-  return(
+  const toggleSelect = () => {
+
+    !isSelect ? setSelect(true) : setSelect(false);
+    console.log("isSelect");
+    console.log(isSelect);
+    chooseCategory(isSelect);
+  };
+
+  return (
     <div className="c-flex-container">
       <form className="c-switch-radio">
         <input
@@ -14,8 +23,8 @@ const SearchFilters = (props) => {
           name="switchToggle"
           className="c-switch-radio__input"
           value="Movies"
-          onChange="test"
-          checked={isSelected}
+          onChange={() => toggleSelect()}
+          checked={!isSelect}
         />
         <label className="c-switch-radio__label" htmlFor="switch_left">
           Movies
@@ -27,8 +36,8 @@ const SearchFilters = (props) => {
           name="switchToggle"
           className="c-switch-radio__input"
           value="TV shows"
-          onChange="{this.toggleState}"
-          checked="{this.state.toggle}"
+          onChange={() => toggleSelect()}
+          checked={isSelect}
         />
         <label className="c-switch-radio__label" htmlFor="switch_right">
           TV shows
@@ -36,10 +45,7 @@ const SearchFilters = (props) => {
       </form>
     </div>
   );
-}
-  
-
-
+};
 
 function mapStateToProps(state) {
   return {
