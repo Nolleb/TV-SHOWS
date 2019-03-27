@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as moviesActions from "../../redux/actions/MoviesAction";
 import * as queryAction from "../../redux/actions/QueryAction";
+import * as tvShowsActions from "../../redux/actions/TvShowsAction";
 
 const Search = props => {
   const [search, setSearch] = useState("");
-  const { loadMovies, updateSearchQuery } = props;
+  const { loadMovies, updateSearchQuery, loadTvShows } = props;
+
+  const isSelected = props.isSelected;  
 
   const handleSubmit = e => {
     e.preventDefault();
-    loadMovies(search);
+    isSelected?loadMovies(search):loadTvShows(search);
     updateSearchQuery(search);
   };
 
@@ -43,13 +46,16 @@ const Search = props => {
 function mapStateToProps(state) {
   return {
     movies: state.movies,
-    query: state.query
+    query: state.query,
+    tvShows: state.tvShows,
+    isSelected: state.isSelected
   };
 }
 
 const mapDispatchToProps = {
   loadMovies: moviesActions.loadMovies,
-  updateSearchQuery: queryAction.updateSearchQuery
+  updateSearchQuery: queryAction.updateSearchQuery,
+  loadTvShows: tvShowsActions.loadTvShows
 };
 
 export default connect(

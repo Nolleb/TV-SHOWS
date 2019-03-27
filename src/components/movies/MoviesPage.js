@@ -21,11 +21,15 @@ class MoviesPage extends React.Component {
   }
 
   render() {
+    const {isSelected, movies, tvShows} = this.props;
+    let category ;
+
+    {isSelected? category=movies: category = tvShows}
     return (
       <Fragment>
-        <h2>Movies</h2>
+        <h2>{isSelected?"Movies":"Tv shows"}</h2>
         <ul className="o-layout">
-            {this.props.movies.map(movie => {
+            {category.map(movie => {
               return <Movie key={movie.id} {...movie} />;
             })}
         </ul>
@@ -37,7 +41,9 @@ class MoviesPage extends React.Component {
 function mapStateToProps(state) {
   return {
     movies: state.movies,
-    query: state.query
+    tvShows: state.tvShows,
+    query: state.query,
+    isSelected: state.isSelected
   };
 }
 
