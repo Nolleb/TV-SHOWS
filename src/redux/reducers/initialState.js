@@ -2,5 +2,6 @@ export default {
   movies: [],
   tvShows: [],
   query: "Batman",
-  isSelected: true
+  isSelected: true,
+  genres: []
 };

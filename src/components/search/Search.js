@@ -4,6 +4,7 @@ import * as moviesActions from "../../redux/actions/MoviesAction";
 import * as queryAction from "../../redux/actions/QueryAction";
 import * as tvShowsActions from "../../redux/actions/TvShowsAction";
 
+
 const Search = props => {
   const [search, setSearch] = useState("");
   const { loadMovies, updateSearchQuery, loadTvShows } = props;

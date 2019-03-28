@@ -20,6 +20,13 @@ const MovieCard = (props) => (
       </div>
       <div className="c-panel__bottom">
         <h2 className="heading-primary">{props.isSelected?props.title:props.name}</h2>
+
+        <div className="c-panel__category">
+          {props.genreNames.map(genre => {
+            return <div key={genre.id} className="label">{genre.name}</div>;
+          })}
+        </div>
+
         <div className="c-panel__headings">
           <div className="c-panel__note ">
             <span className="c-star">&#9733;</span>

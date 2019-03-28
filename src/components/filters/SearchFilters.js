@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as categoryAction from "../../redux/actions/CategoryAction";
+import * as categoriesListAction from "../../redux/actions/CategoriesListAction";
 
 const SearchFilters = props => {
   const [isSelect, setSelect] = useState(false);
-  const { chooseCategory } = props;
+  const { chooseCategory, loadCategories } = props;
 
   const toggleSelect = () => {
 
     !isSelect ? setSelect(true) : setSelect(false);
     console.log("isSelect");
     console.log(isSelect);
+    isSelect?loadCategories('movie'):loadCategories('tv');
     chooseCategory(isSelect);
   };
 
@@ -49,12 +51,14 @@ const SearchFilters = props => {
 
 function mapStateToProps(state) {
   return {
-    isSelected: state.isSelected
+    isSelected: state.isSelected,
+    genres: state.genres
   };
 }
 
 const mapDispatchToProps = {
-  chooseCategory: categoryAction.chooseCategory
+  chooseCategory: categoryAction.chooseCategory,
+  loadCategories: categoriesListAction.loadCategories
 };
 
 export default connect(
