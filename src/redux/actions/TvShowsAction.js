@@ -1,5 +1,6 @@
 import * as types from "./ActionTypes";
 import * as tvShowsApi from "../../api/TvShowsApi";
+import setDataNote from "../../helpers/notation";
 
 export function loadTvShowsSuccess(tvShows) {
   return {
@@ -15,6 +16,7 @@ export function loadTvShows(query) {
       .then(tvShows => {
         console.log("dispatch action");
         dispatch(loadTvShowsSuccess(tvShows));
+        setDataNote();
       })
       .catch(error => {
         throw error;

@@ -1,5 +1,6 @@
 import * as types from "./ActionTypes";
 import * as moviesApi from "../../api/MoviesApi";
+import setDataNote from "../../helpers/notation";
 
 export function loadMoviesSuccess(movies) {
   return {
@@ -15,6 +16,7 @@ export function loadMovies(query) {
       .then(movies => {
         console.log("dispatch action");
         dispatch(loadMoviesSuccess(movies));
+        setDataNote();
       })
       .catch(error => {
         throw error;

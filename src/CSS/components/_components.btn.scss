@@ -1,7 +1,7 @@
 .c-btn {
-  background-color: $color-brand-primary;
-  border: 2px solid $color-brand-primary;
-  border-radius: 50px;
+  background-color: $color-brand-secondary;
+  border: 2px solid $color-brand-secondary;
+  border-radius: 6px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -9,25 +9,15 @@
   transition: all .3s;
   outline: none;
   color: $color-white;
-  font-size: 20px;
-  padding: 5px 20px;
+  font-size: 14px;
+  padding: 3px 6px;
   text-transform: uppercase;
-  &.active {
-      background-color: $color-white;
-      border: 2px solid #1ce;
-  }
-  &:hover {
-      box-shadow: 0 1rem 2rem rgba($color-black, .15);
-  }
+  
   &--inverted {
-    color: $color-brand-primary;
+    color: $color-brand-secondary;
     background-color: $color-white;
-    border: 2px solid $color-brand-primary;
+    border: 2px solid $color-brand-secondary;
   }
-}
-
-.c-btn:not(:first-child){
-  margin-left: 10px;
 }
 
 button {

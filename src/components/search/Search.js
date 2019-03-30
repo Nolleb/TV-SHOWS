@@ -33,12 +33,8 @@ const Search = props => {
         placeholder="Search for movies?"
         onChange={e => handleChange(e)}
       />
-      <button className="c-button" onClick={e => handleSubmit(e)}>
-        <img
-          className="search-icon"
-          src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
-          alt="icon"
-        />
+      <button className="search-bar__button" onClick={e => handleSubmit(e)}>
+        <span className="search-bar__icon">&#9906;</span>
       </button>
     </form>
   );

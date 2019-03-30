@@ -19,14 +19,15 @@ const MovieCard = (props) => (
         </div>
       </div>
       <div className="c-panel__bottom">
-        <h2 className="heading-primary">{props.isSelected?props.title:props.name}</h2>
-
+        <div className="c-panel__headings">
+          <h2 className="heading-primary">{props.isSelected?props.title:props.name}</h2>
+          <h4 className="heading-primary">{props.isSelected?props.release_date.substring(0,4):props.first_air_date.substring(0,4)}</h4>
+        </div>
         <div className="c-panel__category">
           {props.genreNames.map(genre => {
             return <div key={genre.id} className="label">{genre.name}</div>;
           })}
         </div>
-
         <div className="c-panel__headings">
           <div className="c-panel__note ">
             <span className="c-star">&#9733;</span>
@@ -35,8 +36,9 @@ const MovieCard = (props) => (
             </span>{" "}
             <span>{`/10`}</span>
           </div>
-          <h4 className="heading-primary">{props.isSelected?props.release_date:props.first_air_date}</h4>
-          <span>{props.genre_ids[0]}</span>
+          <button className="c-btn">
+            show
+          </button>
         </div>
       </div>
     </div>

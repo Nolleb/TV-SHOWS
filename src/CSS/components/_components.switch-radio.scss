@@ -5,7 +5,7 @@
     &__label {
       display: inline-block;
       width: 100px;
-      background-color: #e4e4e4;
+      background-color: lighten($color-grey-light, 35%);
       color: rgba(0, 0, 0, 0.6);
       font-size: 14px;
       font-weight: normal;
@@ -13,7 +13,6 @@
       text-shadow: none;
       padding: 6px 14px;
       border: 1px solid rgba(0, 0, 0, 0.2);
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
       transition: all 0.1s ease-in-out;
   
       &:hover {
@@ -22,11 +21,11 @@
     }
   
     &__label:first-of-type {
-      border-radius: 4px 0 0 4px;
+      border-radius: 6px 0 0 6px;
     }
   
     &__label:last-of-type {
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 6px 6px 0;
     }
   
     &__input {
@@ -40,7 +39,7 @@
   }
   
   .c-switch-radio input:checked + label {
-    background-color: $color-brand-primary;
-      color: $color-white;
+    background-color: $color-brand-secondary;
+    color: $color-white;
     box-shadow: none;
   }
