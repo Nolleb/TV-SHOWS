@@ -1,6 +1,15 @@
 import React from "react";
-const url='https://image.tmdb.org/t/p/w500';
-const MovieCard = (props) => (
+import { withRouter } from "react-router";
+
+const MovieCard = (props) => {
+  const imgUrl='https://image.tmdb.org/t/p/w500';
+  const goToMovie = (event) => {
+    event.preventDefault();
+    //3. change the page to /store/whatever the have entered
+    props.history.push(`/Movie/${props.id}`);
+  }
+ 
+  return(
   <li className="o-layout__item u-1/2@sm u-1/3@md">
     <div className="c-panel shadow">
       <div className="c-panel__favorite">
@@ -15,7 +24,7 @@ const MovieCard = (props) => (
           </div>
         </a>
         <div className="c-panel__media">
-            <img className='c-panel__img' src={url+props.poster_path} alt="title" width="310" />
+            <img className='c-panel__img' src={imgUrl+props.poster_path} alt="title" width="310" />
         </div>
       </div>
       <div className="c-panel__bottom">
@@ -36,13 +45,14 @@ const MovieCard = (props) => (
             </span>{" "}
             <span>{`/10`}</span>
           </div>
-          <button className="c-btn">
-            show
-          </button>
+            <button className="c-btn c-navigation__link" id={props.id} onClick={(event)=>goToMovie(event)}>
+              Show
+            </button>
         </div>
       </div>
     </div>
   </li>
-);
+  );
+};
 
-export default MovieCard;
+export default withRouter(MovieCard);

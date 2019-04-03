@@ -1,0 +1,37 @@
+.c-single-card {
+    background: $color-white;
+    border-radius: 6px;
+    position:relative;
+    top: -150px;
+    width: 90%;
+    margin: 0 auto;
+
+    &__container {
+        padding: 30px;
+        display: flex;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 20px;
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 1px solid $color-brand-secondary;
+        color: $color-brand-secondary;
+        font-size: 14px;
+        font-size: 24px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        transform: rotate(45deg);
+    }
+
+}
