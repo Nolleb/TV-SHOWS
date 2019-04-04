@@ -16,6 +16,7 @@
         flex-direction: column;
         justify-content: space-around;
         margin-left: 20px;
+        overflow: hidden;
     }
 
     &__close {
@@ -34,4 +35,23 @@
         transform: rotate(45deg);
     }
 
+    &__carousel {
+        display: flex;
+    }
+    &__carousel-item {
+        & > img {
+            height: 180px;
+        }
+    }
+
+    &__name {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 5px;
+        text-align: center;
+        
+        & > span {
+            font-weight: normal;
+        }
+    }
 }

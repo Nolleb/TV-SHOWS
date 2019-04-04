@@ -7,6 +7,7 @@ const MovieSingleCard = props => {
   console.log(props);
   const movie = props.movie;
   const genres = props.movie.genreNames;
+  const casting = props.movie.castingNames;
   //const isSelected = props.isSelected;
 
   return (
@@ -32,6 +33,10 @@ const MovieSingleCard = props => {
         
         </div>
         <div className="c-single-card__overview">{movie.overview}</div>
+        <div className="c-single-card__carousel">
+        {casting.map(elem =><div key={elem.id} className="c-single-card__carousel-item"><img src={imgUrl+elem.profile_path}></img><div className="c-single-card__name">{elem.name} <br/> <span>{elem.character}</span></div></div>
+        )}
+        </div>
       </div>
     </div>
   );

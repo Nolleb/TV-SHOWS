@@ -2,23 +2,28 @@ import React from "react";
 import MovieSingleCard from "./MovieSingleCard";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import * as castingAction from "../../redux/actions/CastingAction";
+//import movieReducer from "../../redux/reducers/TvShowsReducer";
 
 class MovieSingle extends React.Component {
-
-  render() {
-    const closeSingleCard = (e) => {
-      e.preventDefault();
-      alert("toto")
+  componentDidMount(){
+    const movieId = parseInt(this.props.match.params.movieId);
+    if(movieId){
+      this.props.loadCasting(parseInt(movieId));
     }
-    const {genres, movies, isSelected, tvShows} = this.props;
+  }
+  render() {
+    const { movies, isSelected, tvShows, loadCasting} = this.props;
 
     const movieId = parseInt(this.props.match.params.movieId);
 
     const id = isSelected?movies.findIndex(movie => movie.id === movieId):tvShows.findIndex(movie => movie.id === movieId);
     const movie = isSelected?movies[id]:tvShows[id];
+ 
+    
     return (
       <div className="c-single-card">
-        <MovieSingleCard {...genres} movie={movie}/>
+        <MovieSingleCard movie={movie}/>
         <Link to="/" className="c-single-card__close">&#x271A;</Link>
       </div>
     );
@@ -36,7 +41,8 @@ function mapStateToProps(state) {
               ...movie,
               genreNames: state.genres.filter(genre =>
                 movie.genre_ids.includes(genre.id)
-              )
+              ),
+              castingNames: state.casting
             };
           }),
     tvShows:
@@ -52,11 +58,15 @@ function mapStateToProps(state) {
           }),
     query: state.query,
     genres: state.genres,
-    isSelected: state.isSelected
+    isSelected: state.isSelected,
+    casting: state.casting
   };
 }
-
+const mapDispatchToProps = {
+  loadCasting: castingAction.loadCasting
+};
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(MovieSingle);

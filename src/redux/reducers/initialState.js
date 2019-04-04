@@ -3,5 +3,6 @@ export default {
   tvShows: [],
   query: "Batman",
   isSelected: true,
-  genres: []
+  genres: [],
+  casting: []
 };
