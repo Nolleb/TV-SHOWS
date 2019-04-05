@@ -6,6 +6,9 @@
     border-style: solid;
     border-width: 8px 4px 0 4px;
     border-color: $color-brand-secondary transparent transparent transparent;
+    .o-list-inline__item.c-btn & {
+      border-color: $color-white transparent transparent transparent;
+    }
   }
   &__top {
     width: 0;
@@ -13,5 +16,9 @@
     border-style: solid;
     border-width: 0 4px 8px 4px;
     border-color: transparent transparent $color-brand-secondary transparent;
+
+    .o-list-inline__item.c-btn & {
+      border-color: transparent transparent $color-white transparent;
+    }
   }
 }

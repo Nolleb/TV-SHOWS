@@ -18,6 +18,17 @@
     background-color: $color-white;
     border: 2px solid $color-brand-secondary;
   }
+  &.o-list-inline__item {
+    //line-height: none;
+    padding: 0 4px;
+    font-size: 12px;
+    text-transform: initial;
+    line-height: normal;
+    
+    & > button {
+      color: $color-white;
+    }
+  }
 }
 
 button {

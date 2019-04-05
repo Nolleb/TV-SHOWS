@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-const DisplayFilters = () => (
-  <div className="c-filter">
-    <ul className="o-list-inline c-filter__list">
-      <li className="o-list-inline__item">
-        <button>Name</button>
-        <span className="triangle triangle__bottom" />
-        <span className="triangle triangle__top" />
+const DisplayFilters = () => {
+  const [toggle, setToggle] = useState(false);
+  const [active, setActive] = useState(false);
+
+  const labels = ["Name", "Categories", "Notation", "Publication"];
+  const btnCss = "c-filter__btn";
+  const Label = ({ name }) => {
+    return (
+      <li className={ `${"o-list-inline__item"} ${active === name ? "c-btn" : ""}`} onClick={() => {setActive(name);setToggle(!toggle);}} >
+        <button>
+          {name}
+        </button>
+        <span
+          className={`${"triangle triangle__bottom"} ${
+            toggle === false && active === name ? "u-hide" : ""
+          }`}
+        />
+        <span
+          className={`${"triangle triangle__top"} ${
+            toggle === true && active === name ? "u-hide" : ""
+          }`}
+        />
       </li>
-      <li className="o-list-inline__item">
-        <button>Category</button>
-        <span className="triangle triangle__bottom" />
-        <span className="triangle triangle__top" />
-      </li>
-      <li className="o-list-inline__item">
-        <button>Notation</button>
-        <span className="triangle triangle__bottom" />
-        <span className="triangle triangle__top" />
-      </li>
-      <li className="o-list-inline__item">
-        <button>Publication</button>
-        <span className="triangle triangle__bottom" />
-        <span className="triangle triangle__top" />
-      </li>
-    </ul>
-  </div>
-);
+    );
+  };
+const menuFilter = labels.map(label => <Label key={name} name={label} />);
+
+  return (
+    <div className="c-filter">
+      <ul className="o-list-inline c-filter__list">{menuFilter}</ul>
+    </div>
+  );
+};
 
 export default DisplayFilters;
