@@ -3,7 +3,6 @@ import MovieSingleCard from "./MovieSingleCard";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as castingAction from "../../redux/actions/CastingAction";
-//import movieReducer from "../../redux/reducers/TvShowsReducer";
 
 class MovieSingle extends React.Component {
   componentDidMount(){

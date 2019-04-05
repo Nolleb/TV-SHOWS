@@ -5,7 +5,7 @@ const DisplayFilters = () => {
   const [active, setActive] = useState(false);
 
   const labels = ["Name", "Categories", "Notation", "Publication"];
-  const btnCss = "c-filter__btn";
+
   const Label = ({ name }) => {
     return (
       <li className={ `${"o-list-inline__item"} ${active === name ? "c-btn" : ""}`} onClick={() => {setActive(name);setToggle(!toggle);}} >
@@ -25,7 +25,7 @@ const DisplayFilters = () => {
       </li>
     );
   };
-const menuFilter = labels.map(label => <Label key={name} name={label} />);
+const menuFilter = labels.map((label,i) => <Label key={i} name={label} />);
 
   return (
     <div className="c-filter">
