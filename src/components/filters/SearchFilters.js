@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import * as categoryAction from "../../redux/actions/CategoryAction";
-import * as categoriesListAction from "../../redux/actions/CategoriesListAction";
+import {chooseCategory} from "../../redux/actions/CategoryAction";
+import {loadCategories} from "../../redux/actions/CategoriesListAction";
 
 const SearchFilters = props => {
   const [isSelect, setSelect] = useState(false);
@@ -57,8 +57,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  chooseCategory: categoryAction.chooseCategory,
-  loadCategories: categoriesListAction.loadCategories
+  chooseCategory,
+  loadCategories
 };
 
 export default connect(

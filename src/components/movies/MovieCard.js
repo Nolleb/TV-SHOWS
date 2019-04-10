@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import { withRouter } from "react-router";
 
 const MovieCard = (props) => {
+  const [toggle, setToggle] = useState(false);
+
   const imgUrl='https://image.tmdb.org/t/p/w500';
+
+  const addToFavorites = e => {
+    e.preventDefault();
+    setToggle(!toggle);
+  };
+
   const goToMovie = (event) => {
     event.preventDefault();
     //3. change the page to /store/whatever the have entered
@@ -12,9 +20,7 @@ const MovieCard = (props) => {
   return(
   <li className="o-layout__item u-1/2@sm u-1/3@md">
     <div className="c-panel shadow">
-      <div className="c-panel__favorite">
-        <span>&#10084;</span>
-      </div>
+      <div className={`${"c-panel__favorite"} ${toggle ? "active" : ""}`} onClick={e => addToFavorites(e)}><span>&#10084;</span></div>
       <div className="c-panel__top">
         <a href="#" className="c-panel__link">
           <div className="test">

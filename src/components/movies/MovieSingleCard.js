@@ -2,19 +2,39 @@ import React, { useState } from "react";
 import { withRouter } from "react-router";
 
 const MovieSingleCard = props => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  //const [translateValue, setTranslateValue] = useState(0);
-  
+  const [currentIndex, setCurrentIndex] = useState(2);
+//   const  [translateValue,  setTranslateValue] = useState(0);  //const [slider, setSlider] = useState({});
+
+//   const slideWidth = () => {
+//     return document.querySelector('.c-single-card__carousel-item').clientWidth
+//  }
   const imgUrl='https://image.tmdb.org/t/p/w500';
   console.log("props");
   console.log(props);
   const movie = props.movie;
   const genres = props.movie.genreNames;
-  const casting = props.movie.castingNames;
- 
+  let casting = props.movie.castingNames;
+  //setSlider({casting});
+
   console.log("casting"); 
+  console.log(casting);
   console.log(casting.length);
-  //setIndex(Object.keys(casting)[0]);
+
+  // let firstSlide = casting[Object.keys(casting)[0]];
+  // let secondSlide = casting[Object.keys(casting)[1]];
+  // let lastSlide = casting[Object.keys(casting)[casting.length-1]];
+  // let beforeLastSlide = casting[Object.keys(casting)[casting.length-2]];
+  // const newSlider = [beforeLastSlide, lastSlide, ...casting,
+  //   firstSlide,
+  //   secondSlide];
+  //cloner les deux derniers et les deux premiers. Repositionner sur le debut du slider
+  // quand on arrive sur le dernier, on repositionne sur le premier à la fin de l'animation
+  //quand on arrive sur le premier, on repositionne sur le dernier
+
+
+  // const newSlider = [beforeLastSlide, lastSlide, ...casting,
+  //   firstSlide,
+  //   secondSlide];
 
   const nextSlide = () => {
     
@@ -26,11 +46,10 @@ const MovieSingleCard = props => {
 
   const prevSlide = () => {
     if(currentIndex === 0){
-      return;
+      return setCurrentIndex(casting.length-1);
     }
     setCurrentIndex(currentIndex-1);
   }
-
 
   return (
     <div className="c-single-card__container shadow">
@@ -60,15 +79,19 @@ const MovieSingleCard = props => {
             <div className="c-single-card__carousel-wrapper" style={{
               'transform': `translateX(-${currentIndex*(100/casting.length)}%)`
             }}>
-              {casting.map((elem,i) =><div key={elem.id}  id={`c-single-card__carousel-item-${i}`} className="c-single-card__carousel-item"><img src={imgUrl+elem.profile_path}></img><div className="c-single-card__name">{elem.name} <br/> <span>{elem.character}</span></div></div>
+              {casting.map((elem,i) =><div key={i}  id={`c-single-card__carousel-item-${i}`} className="c-single-card__carousel-item"><img src={imgUrl+elem.profile_path}></img><div className="c-single-card__name">{elem.name} <br/> <span>{elem.character}</span></div></div>
               )}
+      
             </div>
           </div>
+          <div className="c-single-card__navigation c-single-card__navigation-left">
+            <button onClick={prevSlide}>&#x276E;</button>
+          </div>
+          <div className="c-single-card__navigation c-single-card__navigation-right">
+            <button onClick={nextSlide}>&#x276F;</button>
+          </div>
         </div>
-        <div className="c-single-card__navigation">
-          <button onClick={prevSlide}>&#x276E;</button>
-          <button onClick={nextSlide}>&#x276F;</button>
-        </div>
+      
       </div>
       
     </div>

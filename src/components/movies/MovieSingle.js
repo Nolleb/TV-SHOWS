@@ -2,7 +2,7 @@ import React from "react";
 import MovieSingleCard from "./MovieSingleCard";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import * as castingAction from "../../redux/actions/CastingAction";
+import {loadCasting} from "../../redux/actions/CastingAction";
 
 class MovieSingle extends React.Component {
   componentDidMount(){
@@ -12,7 +12,7 @@ class MovieSingle extends React.Component {
     }
   }
   render() {
-    const { movies, isSelected, tvShows, loadCasting} = this.props;
+    const { movies, isSelected, tvShows} = this.props;
 
     const movieId = parseInt(this.props.match.params.movieId);
 
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  loadCasting: castingAction.loadCasting
+  loadCasting
 };
 
 export default connect(
