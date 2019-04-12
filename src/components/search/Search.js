@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import * as moviesActions from "../../redux/actions/MoviesAction";
-import * as queryAction from "../../redux/actions/QueryAction";
-import * as tvShowsActions from "../../redux/actions/TvShowsAction";
+import {loadMovies} from "../../redux/actions/MoviesAction";
+import {updateSearchQuery} from "../../redux/actions/QueryAction";
+import {loadTvShows} from "../../redux/actions/TvShowsAction";
 
 
 const Search = props => {
@@ -50,9 +50,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loadMovies: moviesActions.loadMovies,
-  updateSearchQuery: queryAction.updateSearchQuery,
-  loadTvShows: tvShowsActions.loadTvShows
+  loadMovies,
+  updateSearchQuery,
+  loadTvShows
 };
 
 export default connect(

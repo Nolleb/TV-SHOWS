@@ -3,22 +3,12 @@ import { withRouter } from "react-router";
 
 const MovieSingleCard = props => {
   const [currentIndex, setCurrentIndex] = useState(2);
-//   const  [translateValue,  setTranslateValue] = useState(0);  //const [slider, setSlider] = useState({});
 
-//   const slideWidth = () => {
-//     return document.querySelector('.c-single-card__carousel-item').clientWidth
-//  }
+  let casting = props.movie.castingNames;
+ 
   const imgUrl='https://image.tmdb.org/t/p/w500';
-  console.log("props");
-  console.log(props);
   const movie = props.movie;
   const genres = props.movie.genreNames;
-  let casting = props.movie.castingNames;
-  //setSlider({casting});
-
-  console.log("casting"); 
-  console.log(casting);
-  console.log(casting.length);
 
   // let firstSlide = casting[Object.keys(casting)[0]];
   // let secondSlide = casting[Object.keys(casting)[1]];

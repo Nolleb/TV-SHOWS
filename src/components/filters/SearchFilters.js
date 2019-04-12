@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import {chooseCategory} from "../../redux/actions/CategoryAction";
 import {loadCategories} from "../../redux/actions/CategoriesListAction";
+import PropTypes from "prop-types";
 
 const SearchFilters = props => {
   const [isSelect, setSelect] = useState(false);
   const { chooseCategory, loadCategories } = props;
 
   const toggleSelect = () => {
-
     !isSelect ? setSelect(true) : setSelect(false);
-    console.log("isSelect");
-    console.log(isSelect);
     isSelect?loadCategories('movie'):loadCategories('tv');
     chooseCategory(isSelect);
   };
@@ -47,6 +45,11 @@ const SearchFilters = props => {
       </form>
     </div>
   );
+};
+
+SearchFilters.propTypes = {
+  loadCategories: PropTypes.func.isRequired,
+  chooseCategory: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

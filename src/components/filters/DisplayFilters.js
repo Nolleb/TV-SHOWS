@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const DisplayFilters = () => {
   const [toggle, setToggle] = useState(false);
@@ -32,6 +33,10 @@ const menuFilter = labels.map((label,i) => <Label key={i} name={label} />);
       <ul className="o-list-inline c-filter__list">{menuFilter}</ul>
     </div>
   );
+};
+
+DisplayFilters.propTypes = {
+  name: PropTypes.string.isRequired
 };
 
 export default DisplayFilters;
