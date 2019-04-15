@@ -2,6 +2,24 @@ import * as types from "./ActionTypes";
 import * as moviesApi from "../../api/MoviesApi";
 import setDataNote from "../../helpers/notation";
 
+
+
+export function sortMoviesbyName(query, movies) {
+  return { 
+    type: types.SORT_LIST_BY_NAME, 
+    query,
+    movies  
+  };
+}
+
+export function reverseMoviesbyName(query, movies) {
+  return { 
+    type: types.REVERSE_LIST_BY_NAME, 
+    query,
+    movies
+  };
+}
+
 export function loadMoviesSuccess(movies) {
   return {
     type: types.LOAD_MOVIES_SUCCESS,

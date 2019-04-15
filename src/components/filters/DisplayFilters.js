@@ -1,15 +1,43 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import {sortMoviesbyName, reverseMoviesbyName} from "../../redux/actions/MoviesAction";
 import PropTypes from "prop-types";
 
-const DisplayFilters = () => {
+const DisplayFilters = (props) => {
   const [toggle, setToggle] = useState(false);
   const [active, setActive] = useState(false);
 
   const labels = ["Name", "Categories", "Notation", "Publication"];
 
+  const {query, sortMoviesbyName, reverseMoviesbyName} = props;
+
+  const handleClick = (label) => {
+    setActive(label);
+    setToggle(!toggle);
+    switch (label) {
+      case 'Name':
+        if(!toggle){
+          sortMoviesbyName(query);
+        }else{
+          reverseMoviesbyName(query);
+        }
+        
+        break;
+      case 'Categories':
+      console.log('Categories');
+      break;
+      case 'Notation':
+        break;
+      case 'Publication':
+      console.log('publication');
+      break;
+      default:
+        console.log('Sorry, we are out of ' + name + '.');
+    }
+  }
   const Label = ({ name }) => {
     return (
-      <li className={ `${"o-list-inline__item"} ${active === name ? "c-btn" : ""}`} onClick={() => {setActive(name);setToggle(!toggle);}} >
+      <li className={ `${"o-list-inline__item"} ${active === name ? "c-btn" : ""}`} onClick={() => handleClick(name) }>
         <button>
           {name}
         </button>
@@ -39,4 +67,21 @@ DisplayFilters.propTypes = {
   name: PropTypes.string.isRequired
 };
 
-export default DisplayFilters;
+function mapStateToProps(state) {
+  return {
+    isSelected: state.isSelected,
+    query: state.query
+  };
+}
+
+const mapDispatchToProps = {
+  sortMoviesbyName,
+  reverseMoviesbyName
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisplayFilters);
+
+// export default DisplayFilters;
