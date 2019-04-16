@@ -7,7 +7,7 @@ export default function movieReducer(state = initialState.movies, action) {
       return action.movies;
       case types.SORT_LIST_BY_NAME:
       return state.slice().sort(function(a, b) {
-        var nameA = a.title.toLowerCase(),
+        const nameA = a.title.toLowerCase(),
           nameB = b.title.toLowerCase()
         if (nameA < nameB)
           return -1
@@ -17,8 +17,28 @@ export default function movieReducer(state = initialState.movies, action) {
       })
       case types.REVERSE_LIST_BY_NAME:
       return state.slice().sort(function(a, b) {
-        var nameA = a.title.toLowerCase(),
+        const nameA = a.title.toLowerCase(),
           nameB = b.title.toLowerCase()
+        if (nameA > nameB)
+          return -1
+        if (nameA < nameB)
+          return 1
+        return 0
+      })
+      case types.SORT_LIST_BY_POPULARITY:
+      return state.slice().sort(function(a, b) {
+        const nameA = parseFloat(a.popularity),
+          nameB = parseFloat(b.popularity)
+        if (nameA < nameB)
+          return -1
+        if (nameA > nameB)
+          return 1
+        return 0
+      })
+      case types.REVERSE_LIST_BY_POPULARITY:
+      return state.slice().sort(function(a, b) {
+        const nameA = parseFloat(a.popularity),
+        nameB = parseFloat(b.popularity)
         if (nameA > nameB)
           return -1
         if (nameA < nameB)

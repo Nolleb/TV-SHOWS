@@ -4,19 +4,31 @@ import setDataNote from "../../helpers/notation";
 
 
 
-export function sortMoviesbyName(query, movies) {
+export function sortMoviesbyName(query) {
   return { 
     type: types.SORT_LIST_BY_NAME, 
-    query,
-    movies  
+    query
   };
 }
 
-export function reverseMoviesbyName(query, movies) {
+export function reverseMoviesbyName(query) {
   return { 
     type: types.REVERSE_LIST_BY_NAME, 
-    query,
-    movies
+    query
+  };
+}
+
+export function reverseMoviesbyPopularity(query) {
+  return { 
+    type: types.REVERSE_LIST_BY_POPULARITY, 
+    query
+  };
+}
+
+export function sortMoviesbyPopularity(query) {
+  return { 
+    type: types.SORT_LIST_BY_POPULARITY, 
+    query
   };
 }
 
