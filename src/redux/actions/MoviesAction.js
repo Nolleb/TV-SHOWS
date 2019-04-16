@@ -32,6 +32,34 @@ export function sortMoviesbyPopularity(query) {
   };
 }
 
+export function reverseMoviesbyNotation(query) {
+  return { 
+    type: types.REVERSE_LIST_BY_NOTATION, 
+    query
+  };
+}
+
+export function sortMoviesbyNotation(query) {
+  return { 
+    type: types.SORT_LIST_BY_NOTATION, 
+    query
+  };
+}
+
+export function reverseMoviesbyDate(query) {
+  return { 
+    type: types.REVERSE_LIST_BY_DATE,
+    query
+  };
+}
+
+export function sortMoviesbyDate(query) {
+  return { 
+    type: types.SORT_LIST_BY_DATE, 
+    query
+  };
+}
+
 export function loadMoviesSuccess(movies) {
   return {
     type: types.LOAD_MOVIES_SUCCESS,

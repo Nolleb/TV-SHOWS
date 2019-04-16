@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import {sortMoviesbyName, reverseMoviesbyName, sortMoviesbyPopularity, reverseMoviesbyPopularity} from "../../redux/actions/MoviesAction";
+import {sortMoviesbyName, reverseMoviesbyName, sortMoviesbyPopularity, reverseMoviesbyPopularity, sortMoviesbyNotation, reverseMoviesbyNotation, sortMoviesbyDate, reverseMoviesbyDate} from "../../redux/actions/MoviesAction";
 import PropTypes from "prop-types";
 
 const DisplayFilters = (props) => {
@@ -9,7 +9,7 @@ const DisplayFilters = (props) => {
 
   const labels = ["Name", "Popularity", "Notation", "Publication"];
 
-  const {query, sortMoviesbyName, reverseMoviesbyName, sortMoviesbyPopularity, reverseMoviesbyPopularity} = props;
+  const {query, sortMoviesbyName, reverseMoviesbyName, sortMoviesbyPopularity, reverseMoviesbyPopularity, sortMoviesbyNotation, reverseMoviesbyNotation, sortMoviesbyDate, reverseMoviesbyDate} = props;
 
   const handleClick = (label) => {
     setActive(label);
@@ -32,8 +32,18 @@ const DisplayFilters = (props) => {
       }
       break;
       case 'Notation':
+      if(!toggle){
+        sortMoviesbyNotation(query);
+      }else{
+        reverseMoviesbyNotation(query);
+      }
         break;
       case 'Publication':
+      if(!toggle){
+        sortMoviesbyDate(query);
+      }else{
+        reverseMoviesbyDate(query);
+      }
       console.log('publication');
       break;
       default:
@@ -83,7 +93,11 @@ const mapDispatchToProps = {
   sortMoviesbyName,
   reverseMoviesbyName,
   sortMoviesbyPopularity,
-  reverseMoviesbyPopularity
+  reverseMoviesbyPopularity,
+  sortMoviesbyNotation,
+  reverseMoviesbyNotation,
+  sortMoviesbyDate,
+  reverseMoviesbyDate
 };
 
 export default connect(
