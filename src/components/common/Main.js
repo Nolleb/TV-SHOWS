@@ -61,7 +61,8 @@ Main.propTypes = {
   query: PropTypes.string.isRequired,
   loadCategories: PropTypes.func.isRequired,
   loadMovies: PropTypes.func.isRequired,
-  loadTvShows: PropTypes.func.isRequired
+  loadTvShows: PropTypes.func.isRequired,
+  genres: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {

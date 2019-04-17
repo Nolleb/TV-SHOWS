@@ -2,14 +2,12 @@ import * as types from "../actions/ActionTypes";
 import initialState from "./initialState";
 
 export default function favoritesReducer(state = initialState.favorites, action) {
-    console.log("reducer favorites");
-        console.log(action.movie);
     switch (action.type) {
-        case types.ADD_FAVORITE_SUCCESS:
-        console.log("reducer favorites case add");
-            console.log(action.movie);
-        return [...state, { ...action.movie }];
+        case types.ADD_FAVORITE_ITEM:
+            return [...state, { ...action.movie }];
+        case types.REMOVE_FAVORITE_ITEM:
+            return state.filter(movie => movie.id !== action.movie.id);
         default:
-        return state;
+            return state;
   }
 }
