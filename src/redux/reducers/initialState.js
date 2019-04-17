@@ -4,5 +4,6 @@ export default {
   query: "Batman",
   isSelected: true,
   genres: [],
-  casting: []
+  casting: [],
+  favorites: []
 };

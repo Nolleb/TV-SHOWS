@@ -1,6 +1,10 @@
 import React, {useState} from "react";
+import { compose } from 'redux';
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
+import { addToFavorites } from "../../redux/actions/FavoritesAction";
+import { connect } from "react-redux";
+//import compose from "recompose/compose";
 
 const MovieCard = ({
   id,
@@ -13,16 +17,24 @@ const MovieCard = ({
   isSelected,
   vote_average,
   first_air_date,
-  release_date
+  release_date,
+  addToFavorites,
+  movieID
 
 }) => {
   const [toggle, setToggle] = useState(false);
 
   const imgUrl='https://image.tmdb.org/t/p/w500';
 
-  const addToFavorites = e => {
+  const addToFavoritesFn = (e, movie) => {
     e.preventDefault();
+    console.log(movie);
     setToggle(!toggle);
+    if (!toggle) {
+      addToFavorites(movie);
+    } else {
+      console.log("removeFavorite(movie)");
+    }
   };
 
   const goToMovie = (event) => {
@@ -34,7 +46,7 @@ const MovieCard = ({
   return(
   <li className="o-layout__item u-1/2@sm u-1/3@md">
     <div className="c-panel shadow">
-      <div className={`${"c-panel__favorite"} ${toggle ? "active" : ""}`} onClick={e => addToFavorites(e)}><span>&#10084;</span></div>
+      <div className={`${"c-panel__favorite"} ${toggle ? "active" : ""}`} onClick={e => addToFavoritesFn(e, movieID)}><span>&#10084;</span></div>
       <div className="c-panel__top">
         <a href="#" className="c-panel__link">
           <div className="test">
@@ -79,4 +91,23 @@ MovieCard.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-export default withRouter(MovieCard);
+//export default withRouter(MovieCard);
+function mapStateToProps(state) {
+  return {
+    favorites: state.favorites
+  };
+}
+
+const mapDispatchToProps = {
+  addToFavorites
+};
+
+//export default withRouter(MovieCard);
+//export default connect(mapStateToProps)(MovieCard);
+
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(withRouter(MovieCard));

@@ -10,7 +10,7 @@ const MoviesPage = ({genres, movies, tvShows, isSelected}) => {
       <h2>{isSelected ? "Movies" : "Tv Shows"}</h2>
       
       {categories.map(movie => {
-        return <MovieCard key={movie.id} {...movie} {...genres} isSelected={isSelected}/>;
+        return <MovieCard key={movie.id} {...movie} movieID={movie} {...genres} isSelected={isSelected}/>;
       })}
     </Fragment>
   );

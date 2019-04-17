@@ -5,6 +5,7 @@ import query from "./QueryReducer";
 import isSelected from "./CategoryReducer";
 import genres from "./CategoriesListReducer";
 import casting from "./CastingReducer";
+import favorites from './FavoritesReducer';
 
 const rootReducer = combineReducers({
   movies,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   query,
   isSelected,
   genres,
-  casting
+  casting,
+  favorites
 });
 
 export default rootReducer;
