@@ -97,6 +97,9 @@
       background: $color-brand-secondary;
       color: $color-white;
     }
+    .favorite-container & {
+      display: none;
+    }
   }
   &__content {
     padding-right:$global-spacing-unit/2;
