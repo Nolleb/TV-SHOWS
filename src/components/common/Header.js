@@ -16,7 +16,6 @@ const Header = () => (
         </Link>
       </div>
     </div>
-    <p>React, Redux and React Router for ultra-responsive web apps.</p>
   </div>
 );
 

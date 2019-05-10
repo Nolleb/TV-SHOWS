@@ -20,16 +20,18 @@ const MovieCard = ({
   release_date,
   addToFavorites,
   removeFromFavorites,
+  isFavorite,
   movieID
 
 }) => {
-  const [toggle, setToggle] = useState(false);
-
+  const [toggle, setToggle] = useState(isFavorite);
+  
   const imgUrl='https://image.tmdb.org/t/p/w500';
 
   const toggleToFavoritesFn = (e, movie) => {
     e.preventDefault();
-    setToggle(!toggle);
+   setToggle(!toggle);
+   //isFavorite?setToggle(toggle):setToggle(!toggle);
     if (!toggle) {
       addToFavorites(movie);
     } else {
