@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MovieCard from "./MovieCard";
-//import {getAllFavorites} from "../../redux/reducers/FavoritesReducer";
 import {makeGetAllFavorites} from "../../helpers/selectors";
 
 const MoviesFavorites = ({genres, favorites, isSelected}) => {
@@ -23,26 +22,14 @@ MoviesFavorites.propTypes = {
   genres: PropTypes.array.isRequired
 };
 
-// function mapStateToProps  (state) {
-//   //const getAllFavorites = makeGetAllFavoritess;
-//   return {
-//     favorites: makeGetAllFavorites(state) 
-//   } 
-// }
-
-const mapStateToProps = () => {
-  const getAllFavorites = makeGetAllFavorites();
-  return (state)=> getAllFavorites(state)
+const mapStateToProps = (state) => {
+  return {
+    favorites: makeGetAllFavorites(state),
+    genres: state.genres,
+    isSelected: state.isSelected
+  }
 }
-// const mapStateToProps=(state)=> {
-//     return {
-//    // favorites: state.favorites
-//     //favorites: getAllFavorites(state)
-//     favorites: getAllFavorites(state)
-//   };
-// }
 
-//export default MoviesFavorites;
 export default connect(
   mapStateToProps
 )(MoviesFavorites);
