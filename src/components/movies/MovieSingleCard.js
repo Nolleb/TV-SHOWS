@@ -10,22 +10,6 @@ const MovieSingleCard = props => {
   const movie = props.movie;
   const genres = props.movie.genreNames;
 
-  // let firstSlide = casting[Object.keys(casting)[0]];
-  // let secondSlide = casting[Object.keys(casting)[1]];
-  // let lastSlide = casting[Object.keys(casting)[casting.length-1]];
-  // let beforeLastSlide = casting[Object.keys(casting)[casting.length-2]];
-  // const newSlider = [beforeLastSlide, lastSlide, ...casting,
-  //   firstSlide,
-  //   secondSlide];
-  //cloner les deux derniers et les deux premiers. Repositionner sur le debut du slider
-  // quand on arrive sur le dernier, on repositionne sur le premier à la fin de l'animation
-  //quand on arrive sur le premier, on repositionne sur le dernier
-
-
-  // const newSlider = [beforeLastSlide, lastSlide, ...casting,
-  //   firstSlide,
-  //   secondSlide];
-
   const nextSlide = () => {
     
     if(currentIndex === casting.length - 1) {

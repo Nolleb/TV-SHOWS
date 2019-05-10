@@ -11,7 +11,3 @@ export default function favoritesReducer(state = initialState.favorites, action)
             return state;
   }
 }
-
-// export const getAllFavorites =(state)=>{
-//  return {...state, isFavorited : true}
-// }

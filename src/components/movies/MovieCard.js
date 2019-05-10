@@ -29,8 +29,6 @@ const MovieCard = ({
 
   const toggleToFavoritesFn = (e, movie) => {
     e.preventDefault();
-    console.log("movie id");
-    console.log(id);
     setToggle(!toggle);
     if (!toggle) {
       addToFavorites(movie);
@@ -41,7 +39,6 @@ const MovieCard = ({
 
   const goToMovie = (event) => {
     event.preventDefault();
-    //3. change the page to /store/whatever the have entered
     history.push(`/Movie/${id}`);
   }
  
@@ -91,6 +88,7 @@ const MovieCard = ({
 
 MovieCard.propTypes = {
   history: PropTypes.object.isRequired,
+  favorites: PropTypes.array.isRequired
 };
 
 //export default withRouter(MovieCard);

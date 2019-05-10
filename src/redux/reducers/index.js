@@ -5,7 +5,7 @@ import query from "./QueryReducer";
 import isSelected from "./CategoryReducer";
 import genres from "./CategoriesListReducer";
 import casting from "./CastingReducer";
-import favorites, * as fromFavorites from './FavoritesReducer';
+import favorites from './FavoritesReducer';
 
 const rootReducer = combineReducers({
   movies,
@@ -18,5 +18,3 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
-
-export const getAllFavorites = (state) => fromFavorites.getAllFavorites(state.favorites);

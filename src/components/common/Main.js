@@ -10,6 +10,7 @@ import { loadMovies } from "../../redux/actions/MoviesAction";
 import { loadTvShows } from "../../redux/actions/TvShowsAction";
 import { loadCategories } from "../../redux/actions/CategoriesListAction";
 import { updateSearchQuery } from "../../redux/actions/QueryAction";
+import {makeGetAllMovies, makeGetAllTVShows} from "../../helpers/selectors";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -65,30 +66,10 @@ Main.propTypes = {
   genres: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
-    movies:
-      state.genres === 0
-        ? []
-        : state.movies.map(movie => {
-            return {
-              ...movie,
-              genreNames: state.genres.filter(genre =>
-                movie.genre_ids.includes(genre.id)
-              )
-            };
-          }),
-    tvShows:
-      state.genres === 0
-        ? []
-        : state.tvShows.map(movie => {
-            return {
-              ...movie,
-              genreNames: state.genres.filter(genre =>
-                movie.genre_ids.includes(genre.id)
-              )
-            };
-          }),
+    movies: makeGetAllMovies(state),
+    tvShows: makeGetAllTVShows(state),
     query: state.query,
     genres: state.genres,
     isSelected: state.isSelected,

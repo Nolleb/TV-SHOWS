@@ -79,7 +79,7 @@ const menuFilter = labels.map((label,i) => <Label key={i} name={label} />);
 };
 
 DisplayFilters.propTypes = {
-  name: PropTypes.string.isRequired
+ // name: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
