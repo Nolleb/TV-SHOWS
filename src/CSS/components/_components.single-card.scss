@@ -7,6 +7,23 @@
     max-width: 1068px;
     margin: 0 auto;
 
+    &__category {
+        display: flex;
+    }
+
+    &__title {
+        font-size: 26px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    &__section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+
     &__container {
         padding: 30px;
         display: flex;
@@ -15,9 +32,12 @@
     &__body {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         margin-left: 20px;
         overflow: hidden;
+    }
+
+    &__overview {
+        margin-top: auto;
     }
 
     &__close {
@@ -102,9 +122,17 @@
         transform: translateY(-30%);
     }
 
+    &__media {
+        & > img {
+            display: block;
+        }
+    }
+
     &__effect {
         position: relative;
         height: 210px;
+        margin-top: 30px;
+        margin-bottom: 10px;
         &::before,
         &::after {
             content: "";

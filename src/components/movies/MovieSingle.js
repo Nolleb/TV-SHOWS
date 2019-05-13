@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import MovieSingleCard from "./MovieSingleCard";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,10 +21,13 @@ class MovieSingle extends React.Component {
  
     
     return (
-      <div className="c-single-card">
-        <MovieSingleCard movie={movie}/>
-        <Link to="/" className="c-single-card__close">&#x271A;</Link>
-      </div>
+      <Fragment>
+        <div className="u-overlay"></div>
+        <div className="c-single-card">
+          <MovieSingleCard movie={movie}/>
+          <Link to="/" className="c-single-card__close">&#x271A;</Link>
+        </div>
+      </Fragment>
     );
   }
 }

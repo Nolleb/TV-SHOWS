@@ -1,9 +1,8 @@
 import axios from "axios";
-//import initialState from "../redux/reducers/initialState";
-//const baseUrl = process.env.API_URL + "/authors/";
-const apiUrl = "https://api.themoviedb.org/3/movie/";
-const apiKey = "/credits?api_key=6274a77e12c826f73648c02c0ae4b6cb";
-//const query = "batman";
+import apiVariables from "../helpers/variables";
+
+const apiUrl = apiVariables.urlMovie;
+const apiKey = apiVariables.apiCreditKey;
 
 export function getCasting(id) {
   return axios

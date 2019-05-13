@@ -1,8 +1,9 @@
 import axios from "axios";
 
-//const apiUrl = "https://api.themoviedb.org/3/genre/movie/list?";
-const apiUrl = "https://api.themoviedb.org/3/genre/";
-const apiKey = "/list?api_key=6274a77e12c826f73648c02c0ae4b6cb";
+import apiVariables from "../helpers/variables";
+
+const apiUrl = apiVariables.urlMovieList;
+const apiKey = apiVariables.apiKeyList;
 
 export function getCategories(category) {
   return axios

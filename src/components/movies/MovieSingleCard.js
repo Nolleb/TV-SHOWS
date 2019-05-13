@@ -32,21 +32,25 @@ const MovieSingleCard = props => {
       </div>
       
       <div className="c-single-card__body">
-        <div className="c-single-card__title">{movie.title}</div>
-        <h4 className="heading-primary">{movie.release_date.substring(0,4)}</h4>
-        <div className="c-panel__note ">
+        <div className="c-single-card__section">
+          <div className="c-single-card__title">{movie.title}</div>
+          <h4 className="heading-primary">{movie.release_date.substring(0,4)}</h4>
+        </div>
+        
+        <div className="c-single-card__section">
+          <div className="c-panel__note ">
             <span className="c-star">&#9733;</span>
             <span className="c-panel__vote-average c-score c-score--inverse">
               {movie.vote_average}
             </span>{" "}
             <span>{`/10`}</span>
           </div>
-        <div className="c-single-card__category">
-
-        {genres.map(elem =><div key={elem.id} className="label">{elem.name}</div>
-        )}
-        
+          <div className="c-single-card__category">
+            {genres.map(elem =><div key={elem.id} className="label">{elem.name}</div>
+            )}
+          </div>
         </div>
+        
         <div className="c-single-card__overview">{movie.overview}</div>
         <div className="c-single-card__effect">
           <div className={`c-single-card__carousel active-slide-${currentIndex}`}>

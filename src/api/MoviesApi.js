@@ -1,7 +1,8 @@
 import axios from "axios";
+import apiVariables from "../helpers/variables";
 
-const apiUrl = "https://api.themoviedb.org/3/search/movie?query=";
-const apiKey = "&api_key=6274a77e12c826f73648c02c0ae4b6cb";
+const apiUrl = apiVariables.urlMovieSearch;
+const apiKey = apiVariables.apiKey;
 
 export function getMovies(query) {
   return axios
