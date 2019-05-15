@@ -5,7 +5,7 @@ const Header = () => (
   <div className="c-page-head">
     <div className="c-navigation">
       <Link to="/" className="btn">
-        <h1>TV SHOW APP</h1>
+        <h1>Movies & TV shows</h1>
       </Link>
       <div className="c-navigation__links">
         <Link to="/about" className="c-btn c-navigation__link">

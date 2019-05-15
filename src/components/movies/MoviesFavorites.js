@@ -6,7 +6,7 @@ import {makeGetAllFavorites} from "../../helpers/selectors";
 
 const MoviesFavorites = ({genres, favorites, isSelected}) => {
   return (
-    <div className="favorite-container">
+    <div className="c-page favorite-container">
       <h2>Favorites list</h2>
       
       {favorites.map(movie => {
