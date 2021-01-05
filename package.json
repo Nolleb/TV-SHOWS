@@ -5,7 +5,7 @@
     "start": "webpack-dev-server --config webpack.config.dev.js --port 3000"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "4.3.1",
     "immer": "2.0.0",
     "node-sass": "^4.11.0",
